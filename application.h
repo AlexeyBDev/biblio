@@ -5,6 +5,11 @@
 
 namespace BIBLIO {
 
+/**
+ * @brief The Application class - пользовательский класс
+ * приложения.
+ */
+
 class Application : public QApplication
 {
 public:
