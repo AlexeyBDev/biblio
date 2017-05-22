@@ -1,11 +1,12 @@
 #include "mainwindow.h"
-#include <QApplication>
+#include "application.h"
+
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    BIBLIO::Application app(argc, argv);
     BIBLIO::MainWindow w;
     w.show();
 
-    return a.exec();
+    return app.exec();
 }
