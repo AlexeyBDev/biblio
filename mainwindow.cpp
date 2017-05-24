@@ -21,11 +21,11 @@ MainWindow::MainWindow(QWidget *parent)
     QMenu *mItem = menuBar()->addMenu(tr("Item (A)"));
     mItem->addAction(actNewItem);
 
-    QToolButton *B = new QToolButton(this);
-    B->setText(tr("Item (B)"));
-    B->move(100, 100);
-    //connect(B, SIGNAL(clicked(bool)), this, SLOT(newItem()));
-    B->setDefaultAction(actNewItem);
+//    QToolButton *B = new QToolButton(this);
+//    B->setText(tr("Item (B)"));
+//    B->move(100, 100);
+//    //connect(B, SIGNAL(clicked(bool)), this, SLOT(newItem()));
+//    B->setDefaultAction(actNewItem);
 
 //    QPushButton *C = new QPushButton(this);
 //    C->setText(tr("Item (C)"));
@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
 //    connect(C,          SIGNAL(clicked(bool)),
 //            actNewItem, SIGNAL(triggered(bool)));
 
-    actNewItem->setEnabled(false);
+//    actNewItem->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
