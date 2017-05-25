@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QFrame>
 
+#include "itemeditframe.h"
+
 class QPushButton;
 
 namespace BIBLIO {
@@ -37,6 +39,7 @@ class ItemEditDialog : public QDialog
     Q_OBJECT
 
     private:
+        ItemEditFrame       *Edt;
         IED_HELPER::Buttons *Btn;
 
     public:

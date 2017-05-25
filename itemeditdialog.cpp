@@ -48,11 +48,8 @@ ItemEditDialog::ItemEditDialog(QWidget *parent) :
 
     {
         // Верхний фрейм
-     QFrame *F = new QFrame(this);
-     F->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
-     F->setSizePolicy(QSizePolicy::Expanding,
-                      QSizePolicy::Expanding);
-     L0->addWidget(F);
+     Edt = new ItemEditFrame(this);
+     L0->addWidget(Edt);
     }
     {
         // Нижний фрейм

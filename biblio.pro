@@ -26,12 +26,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         application.cpp         \
         itemeditdialog.cpp      \
+        itemeditframe.cpp       \
         main.cpp                \
         mainwindow.cpp
 
 
 HEADERS  += \
         application.h           \
+        itemeditframe.h         \
         itemeditdialog.h        \
         mainwindow.h
 

@@ -45,8 +45,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::newItem()
 {
+    // modal dialog
     ItemEditDialog Dia(this);
     Dia.exec();
+
+    // non modal dialog
+//    ItemEditDialog *Dia = new ItemEditDialog(this);
+//    Dia->show();
 }
 
 } // namespace BIBLIO
