@@ -20,6 +20,13 @@ private:
     void setup_Publisher    (QBoxLayout *L);
     void setup_Year         (QBoxLayout *L);
     void setup_TotalPages   (QBoxLayout *L);
+    void setup_Journal      (QBoxLayout *L);
+    void setup_Volume       (QBoxLayout *L);
+    void setup_Issue        (QBoxLayout *L);
+    void setup_Pages        (QBoxLayout *L);
+    void setup_Comment      (QBoxLayout *L);
+    void setup_Kind         (QBoxLayout *L);
+
 public:
     ItemEditFrame(QWidget *parent = 0);
     virtual ~ItemEditFrame();
