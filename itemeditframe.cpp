@@ -1,5 +1,6 @@
 #include "itemeditframe.h"
 #include "helpers.h"
+#include "items.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -46,6 +47,8 @@ ItemEditFrame::ItemEditFrame(QWidget *parent)
     }
 
     setup_Comment(L);
+
+    cbxKind->currentIndexChanged(Unknown);
 }
 
 /**************************************************************/
@@ -159,11 +162,11 @@ void ItemEditFrame::setup_TotalPages(QBoxLayout *L)
     L1->setMargin(0);
     L->addLayout(L1);
 
-    QLabel *lbl = new QLabel();
+    QLabel *lbl = lblTotalPages = new QLabel();
     lbl->setText(tr("Total Pages"));
     L1->addWidget(lbl);
 
-    QLineEdit *txt = new QLineEdit();
+    QLineEdit *txt = edtTotalPages = new QLineEdit();
     L1->addWidget(txt);
 }
 
@@ -266,9 +269,60 @@ void ItemEditFrame::setup_Kind(QBoxLayout *L)
     QSpacerItem *Sp = new QSpacerItem(0, 0, QSizePolicy::Expanding);
     L1->addItem(Sp);
 
-    QComboBox *cbx = new QComboBox(this);
-    cbx->addItem(tr("---"));
+    QComboBox *cbx = cbxKind = new QComboBox(this);
+    cbx->addItem(tr("---")      , Unknown);
+    cbx->addItem(tr("Book")     , Book);
+    cbx->addItem(tr("Article")  , Article);
+    cbx->setCurrentIndex(Unknown);
     L1->addWidget(cbx);
+
+    connect(cbx, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(kindSelected(int)));
+}
+
+/**************************************************************/
+
+void ItemEditFrame::kindSelected(int index) {
+    QComboBox *C = dynamic_cast<QComboBox*>(sender());
+    if(!C) {
+        /**Todo Здесь написать сообщение в лог
+         */
+        return;
+    }
+    else {
+
+    }
+    bool OK = false;
+    int K = C->itemData(index).toInt(&OK);
+    if(!OK) {
+        /**Todo Здесь написать сообщение в лог
+         */
+        return;
+    }
+    switch (K) {
+    case Unknown:
+        lblTotalPages->setVisible(true);
+        lblTotalPages->setEnabled(false);
+        edtTotalPages->setVisible(true);
+        edtTotalPages->setEnabled(false);
+        break;
+    case Book:
+        lblTotalPages->setVisible(true);
+        lblTotalPages->setEnabled(true);
+        edtTotalPages->setVisible(true);
+        edtTotalPages->setEnabled(true);
+        break;
+    case Article:
+        lblTotalPages->setVisible(false);
+        lblTotalPages->setEnabled(false);
+        edtTotalPages->setVisible(false);
+        edtTotalPages->setEnabled(false);
+        break;
+    default:
+        /**Todo Здесь написать сообщение в лог
+         */
+        return;
+    }
 }
 
 /**************************************************************/
