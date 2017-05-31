@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMap>
 
 // Класс QAction, объявленный в заголовочном файле, используется только для
 // того чтобы создать переменную-указатель. Функционал данного класса использоваться
@@ -24,6 +25,7 @@ class MainWindow : public QMainWindow
 private:
     QAction *actNewItem;
 
+    QMap<QString, QAction*> modeActiond;
     QAction *actEditMode;
     QAction *actTableMode;
 
@@ -33,8 +35,11 @@ public:
 
 protected slots:
     void newItem(void);
-    //void editMode(void);
-    //void tableMode(void);
+    void editMode(void);
+    void tableMode(void);
+
+signals:
+    void cancelMode (bool *OK = 0);
 
 };
 

@@ -12,6 +12,9 @@ class Edit : public QTextEdit
 public:
     Edit(QWidget *parent = 0);
     virtual ~Edit();
+
+public slots:
+    void onCancelMode(bool *OK = 0);
 };
 
 } // namespace BIBLIO

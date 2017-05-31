@@ -4,7 +4,7 @@ namespace BIBLIO {
 
 Table::Table(QWidget *parent)
     : QTableView(parent) {
-//    setProperty("modeName", "Table");
+    setProperty("modeName", "Table");
 }
 
 Table::~Table() {
