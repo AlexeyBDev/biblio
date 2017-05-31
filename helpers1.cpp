@@ -18,9 +18,9 @@ void setHorisontalPolicy(QWidget *W, QSizePolicy::Policy Pol)
  */
 void setWidth(QWidget *W, int Width)
 {
-    QSize S = W->minimumSize();
+    QSize S = W->maximumSize();
     S.setWidth(Width);
-    W->setMinimumSize(S);
+    W->setMaximumSize(S);
     // W->resize(S);
 }
 

@@ -1,10 +1,13 @@
 #include "mainwindow.h"
 #include "itemeditdialog.h"
+#include "table.h"
+#include "edit.h"
 
 #include <QAction>
 #include <QPushButton>
 #include <QToolButton>
 #include <QMenuBar>
+#include <QTextEdit>
 
 namespace BIBLIO {
 
@@ -36,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent)
 //            actNewItem, SIGNAL(triggered(bool)));
 
 //    actNewItem->setEnabled(false);
+
+    Edit *T = new Edit(this);
+    setCentralWidget(T);
 }
 
 MainWindow::~MainWindow()

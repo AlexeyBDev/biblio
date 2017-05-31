@@ -24,12 +24,17 @@ class MainWindow : public QMainWindow
 private:
     QAction *actNewItem;
 
+    QAction *actEditMode;
+    QAction *actTableMode;
+
 public:
     MainWindow(QWidget *parent = 0);
     virtual ~MainWindow();
 
 protected slots:
     void newItem(void);
+    //void editMode(void);
+    //void tableMode(void);
 
 };
 

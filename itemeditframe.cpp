@@ -233,7 +233,7 @@ void ItemEditFrame::setup_Pages(QBoxLayout *L)
     QLabel *lbl = new QLabel();
     lbl->setText(tr("Pages"));
     HLP::setHorisontalPolicy(lbl, QSizePolicy::Minimum);
-    //HLP::setWidth(lbl, 150);
+    HLP::setWidth(lbl, 50);
     L1->addWidget(lbl);
 
     QLineEdit *txt = new QLineEdit();
