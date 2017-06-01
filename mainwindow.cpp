@@ -11,6 +11,7 @@
 #include <QToolBar>
 #include <QDockWidget>
 #include <QFrame>
+#include <QIcon>
 
 namespace BIBLIO {
 
@@ -26,14 +27,18 @@ MainWindow::MainWindow(QWidget *parent)
     connect(A, SIGNAL(triggered()), this, SLOT(newItem()));
     } {
     QAction *A = actTableMode = new QAction(this);
+    QIcon Ic(":/icons/table");
     A->setText(tr("Table mode"));
+    A->setIcon(Ic);
     A->setCheckable(true);
     agModes->addAction(A);
     modeActiond.insert("Table", A);
     connect(A, SIGNAL(triggered()), this, SLOT(tableMode()));
     } {
     QAction *A = actEditMode = new QAction(this);
+    QIcon Ic(":/icons/edit");
     A->setText(tr("Edit mode"));
+    A->setIcon(Ic);
     A->setCheckable(true);
     agModes->addAction(A);
     modeActiond.insert("Edit", A);

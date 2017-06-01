@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="edit">gear.ico</file>
+        <file alias="table">list.ico</file>
+    </qresource>
+    <qresource prefix="/lang">
+        <file alias="rus">biblio_rus.qm</file>
+    </qresource>
+</RCC>

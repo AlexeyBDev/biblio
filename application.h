@@ -3,6 +3,8 @@
 
 #include <QApplication>
 
+class QTranslator;
+
 namespace BIBLIO {
 
 /**
@@ -12,6 +14,9 @@ namespace BIBLIO {
 
 class Application : public QApplication
 {
+    Q_OBJECT
+private:
+    QTranslator *pTranslator;
 public:
     Application(int argc, char *argv[]);
     virtual ~Application();
