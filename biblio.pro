@@ -26,6 +26,7 @@ TRANSLATIONS += biblio_rus.ts
 
 SOURCES += \
         application.cpp         \
+        bibliomodel.cpp         \
         edit.cpp                \
         helpers1.cpp            \
         itemeditdialog.cpp      \
@@ -34,8 +35,10 @@ SOURCES += \
         mainwindow.cpp          \
         table.cpp
 
+
 HEADERS  += \
         application.h           \
+        bibliomodel.h           \
         edit.h                  \
         data.h                  \
         helpers.h               \
@@ -44,6 +47,7 @@ HEADERS  += \
         items.h                 \
         mainwindow.h            \
         table.h
+
 
 RESOURCES += \
         biblio.qrc

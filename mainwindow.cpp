@@ -62,9 +62,10 @@ MainWindow::MainWindow(QWidget *parent)
     tbEmpty->setWindowTitle(tr("Empty"));
     addToolBar(Qt::TopToolBarArea, tbEmpty);
 
-    Edit *T = new Edit(this);
-    setCentralWidget(T);
-    editMode();
+//    Edit *T = new Edit(this);
+//    setCentralWidget(T);
+//    editMode();
+    tableMode();
 
     // несколько тестовых припаркованных окон
 

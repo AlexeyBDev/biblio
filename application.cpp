@@ -9,6 +9,8 @@ Application::Application(int argc, char *argv[])
     pTranslator = new QTranslator(this);
     pTranslator->load(":/lang/rus");
     installTranslator(pTranslator);
+
+    pModel = new BiblioModel(this);
 }
 
 Application::~Application()
