@@ -8,6 +8,7 @@
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QComboBox>
+#include <QIntValidator>
 
 namespace BIBLIO {
 
@@ -15,6 +16,9 @@ namespace BIBLIO {
 
 ItemEditFrame::ItemEditFrame(QWidget *parent)
     : QFrame(parent) {
+
+    Dt = 0;
+
     setFrameStyle(StyledPanel | Sunken);
     setSizePolicy(QSizePolicy::Expanding,
                   QSizePolicy::Expanding);
@@ -64,7 +68,7 @@ void ItemEditFrame::setup_Author(QBoxLayout *L)
     lbl->setText(tr("Author"));
     L1->addWidget(lbl);
 
-    QLineEdit *txt = new QLineEdit();
+    QLineEdit *txt = edtAuthor = new QLineEdit();
     L1->addWidget(txt);
 }
 
@@ -81,7 +85,7 @@ void ItemEditFrame::setup_Title(QBoxLayout *L)
     lbl->setText(tr("Title"));
     L1->addWidget(lbl);
 
-    QLineEdit *txt = new QLineEdit();
+    QLineEdit *txt = edtTitle = new QLineEdit();
     L1->addWidget(txt);
 }
 
@@ -167,6 +171,7 @@ void ItemEditFrame::setup_TotalPages(QBoxLayout *L)
     L1->addWidget(lbl);
 
     QLineEdit *txt = edtTotalPages = new QLineEdit();
+    txt->setValidator(new QIntValidator(0, 1000000));
     L1->addWidget(txt);
 }
 
@@ -183,7 +188,7 @@ void ItemEditFrame::setup_Journal(QBoxLayout *L)
     lbl->setText(tr("Journal"));
     L1->addWidget(lbl);
 
-    QLineEdit *txt = new QLineEdit();
+    QLineEdit *txt = edtJournal = new QLineEdit();
     L1->addWidget(txt);
 }
 
@@ -334,5 +339,42 @@ ItemEditFrame::~ItemEditFrame()
 
 
 /**************************************************************/
+
+void ItemEditFrame::attach(DATA::Object *X) {
+    Dt = X;
+    if(!Dt) return;
+    // Общая часть
+    edtAuthor->setText(X->Author);
+    edtTitle->setText(X->Title);
+    {// Для книги
+        DATA::Book *B = dynamic_cast<DATA::Book*>(X);
+        if(B) {
+            QString N;
+            N.setNum(B->TotalPages);
+            edtTotalPages->setText(N);
+            int k = cbxKind->findData(Book);
+            if(k >= 0) cbxKind->setCurrentIndex(k);
+            cbxKind->setEnabled(false);
+        }
+    } { // Для статьи
+        DATA::Article *B = dynamic_cast<DATA::Article*>(X);
+        if(B) {
+            edtJournal->setText(B->Journal);
+        }
+    }
+}
+
+/**************************************************************/
+
+void ItemEditFrame::save(void) {
+
+}
+
+/**************************************************************/
+
+bool ItemEditFrame::isValid() const {
+    if(edtTitle->text().size() <= 0) return true;
+    return edtTitle->text().at(0) != '.';
+}
 
 } // namespace BIBLIO

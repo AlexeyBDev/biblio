@@ -13,7 +13,7 @@ struct Object {
     QString Location;
     QString Publisher;
     int     Year;
-    //virtual ~QObject() {};
+    virtual ~Object() {};
 };
 
 struct Book : public Object {

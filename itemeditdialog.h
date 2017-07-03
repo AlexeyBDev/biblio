@@ -5,6 +5,7 @@
 #include <QFrame>
 
 #include "itemeditframe.h"
+#include "data.h"
 
 class QPushButton;
 
@@ -46,7 +47,10 @@ class ItemEditDialog : public QDialog
         ItemEditDialog(QWidget *parent = 0);
         virtual ~ItemEditDialog();
 
+        void attach(DATA::Object *X) {Edt->attach(X);}
 
+    protected:
+        void closeEvent(QCloseEvent *E);
 };
 
 } // namespace BIBLIO

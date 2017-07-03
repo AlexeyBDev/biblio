@@ -5,6 +5,7 @@
 #include <QBoxLayout>
 #include <QSizePolicy>
 #include <QSpacerItem>
+#include <QCloseEvent>
 
 namespace BIBLIO {
 
@@ -65,6 +66,28 @@ ItemEditDialog::ItemEditDialog(QWidget *parent) :
 ItemEditDialog::~ItemEditDialog()
 {
 
+}
+
+/**************************************************************/
+
+void ItemEditDialog::closeEvent(QCloseEvent *E) {
+    switch (result()) {
+    case Rejected:
+        E->accept();
+        break;
+    case Accepted:
+        if(Edt->isValid()) {
+            Edt->save();
+            E->accept();
+        }
+        else {
+            E->ignore();
+        }
+        break;
+    default:
+        E->accept();
+        break;
+    }
 }
 
 /**************************************************************/

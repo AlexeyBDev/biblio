@@ -22,6 +22,8 @@ public:
     int columnCount (const QModelIndex &parent = QModelIndex()) const;
 
     QVariant data(const QModelIndex &I, int  role = Qt::DisplayRole) const;
+
+    DATA::Object *at(int k) { return List.at(k); }
 };
 
 } // namespace BIBILO
